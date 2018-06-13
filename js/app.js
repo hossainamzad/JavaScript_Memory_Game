@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+let cardHolder = [];
 
 /*
  * Display the cards on the page
@@ -9,6 +9,15 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+function displayCards() {
+  let cards = document.querySelectorAll('.card');
+  console.log(cards)
+  for (let card of cards) {
+    card.addEventListener('click', function(){
+      console.log('cliked!!')
+    })
+  }
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {

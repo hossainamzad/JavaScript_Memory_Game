@@ -1,5 +1,4 @@
 # Memory Game Project
-#testing the connection
 
 ## Table of Contents
 
