@@ -2,6 +2,13 @@
  * Create a list that holds all of your cards
  */
 let cardHolder = [];
+const score_panel = document.querySelector('.score-panel');
+const stars = document.querySelector('.stars');
+const moves = document.querySelector('.moves');
+const restart = document.querySelector('.restart');
+const deck = document.querySelector('.deck');
+const cards = document.querySelectorAll('.card');
+
 
 /*
  * Display the cards on the page
@@ -10,13 +17,12 @@ let cardHolder = [];
  *   - add each card's HTML to the page
  */
 function displayCards() {
-  let cards = document.querySelectorAll('.card');
-  console.log(cards)
-  for (let card of cards) {
-    card.addEventListener('click', function(){
-      console.log('cliked!!')
+  // console.log(cards)
+  cards.forEach(function(card){
+     card.addEventListener('click', function(e){
+      card.classList.add('open', 'show');
     })
-  }
+  })
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -34,7 +40,6 @@ function shuffle(array) {
     return array;
 }
 
-
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -45,3 +50,24 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+// add an eventlistener to a parent element for performence issue
+// deck.addEventListener('click', doSomething);
+// // create doSomething function that runs at every click
+// function doSomething(e) {
+//   let clickedItem = e.target.id;
+//   console.log("I am clicked:" + clickedItem);
+//   clickedItem.classList.add('open', 'show')
+// }
+
+
+
+
+
+
+
+
+
+
+
+
