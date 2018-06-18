@@ -17,7 +17,7 @@ const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
-const openCards = [];
+let cardsInPlay = [];
 
 
 /*
@@ -70,28 +70,45 @@ function shuffle(array) {
 //   clickedItem.classList.add('open', 'show')
 // }
 
+// function openCard(arg) {
+//   arg.classList.add('open', 'show');
+// }
 
-cards.forEach((card) => {
-  card.addEventListener('click', (e) => {
-    card.classList.add('open', 'show');
-    //.classList will retrieve the list of classes set on the card element
-    // .add method is letting me add .open and .show class to the element
-    // read for more: https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList
+function newGame() {
+  document.querySelector('.restart').onclick = function() {
+   // alert("restarting the game!!!!");
+    cardsInPlay = [];
+ }
+}
 
-    openCards.push(card);
-    console.log('openCards', openCards.length)
+function flipCard() {
+  cards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      // openCard();
+      card.classList.add('open', 'show');
+      //.classList will retrieve the list of classes set on the card element
+      // .add method is letting me add .open and .show class to the element
+      // read for more: https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList
+
+      cardsInPlay.push(card);
+      console.log('cardsInPlay', cardsInPlay.length)
 
 
-     if(openCards.length >= 2) {
-      setTimeout( () => {
-        openCards.forEach( (card) => {
-          card.classList.remove('open', 'show');
-          })
-        }, 1000)
-      }
+       if(cardsInPlay.length >= 2) {
+        // delay
+        setTimeout( () => {
+          cardsInPlay.forEach( (card) => {
+            // hide the open cards when condition met
+            card.classList.remove('open', 'show');
+            // empty the cardsInPlay array
+            cardsInPlay = [];
+            })
+          }, 1000)
+        }
+    })
   })
-})
-
+  newGame();
+}
 
 
 
