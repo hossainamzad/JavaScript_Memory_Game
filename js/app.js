@@ -20,20 +20,6 @@ const cards = document.querySelectorAll('.card');
 let cardsInPlay = [];
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-// function displayCards() {
-//   // console.log(cards)
-//   cards.forEach(function(card){
-//      card.addEventListener('click', function(e){
-//       card.classList.add('open', 'show');
-//     })
-//   })
-// }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -61,6 +47,49 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ /*
+*
+*
+*
+*/
+
+function displayCardsOnTheBoard(card) {
+  return `<li class="card">
+                <i class="fa ${card}"></i>
+            </li>`;
+}
+
+/*
+*
+*
+*
+*/
+
+function createBoard() {
+  let cardHTML = shuffle(cardHolder).map((card) => {
+    return displayCardsOnTheBoard(card);
+  })
+  deck.innerHTML = cardHTML.join('');
+}
+
+// createBoard();
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+
+// function displayCards() {
+//   // console.log(cards)
+//   cards.forEach(function(card){
+//      card.addEventListener('click', function(e){
+//       card.classList.add('open', 'show');
+//     })
+//   })
+// }
+
 // add an eventlistener to a parent element for performence issue
 // deck.addEventListener('click', doSomething);
 // // create doSomething function that runs at every click
@@ -74,15 +103,90 @@ function shuffle(array) {
 //   arg.classList.add('open', 'show');
 // }
 
-function newGame() {
-  document.querySelector('.restart').onclick = function() {
-   // alert("restarting the game!!!!");
-    cardsInPlay = [];
- }
+/*
+*
+*
+*
+*/
+// function newGame() {
+//   document.querySelector('.restart').onclick = function() {
+//    // alert("restarting the game!!!!");
+//     cardsInPlay = [];
+//  }
+// }
+
+/*
+*
+*
+*
+*/
+function removingStars() {
+  // grab the li
+  let removeStar = document.querySelector('.stars li');
+  // remove it from DOM
+  removeStar.remove();
 }
+// removingStars();
+/*
+*
+*
+*
+*/
+function addingStars() {
+  // grab the ul
+  var ul = document.querySelector('.stars');
+  // create a new li
+  var li = document.createElement('li');
+  // and give it some content
+  var newLi = document.createTextNode('0');
+  // add the text node to the newly created li
+  li.appendChild(newLi);
+  // add the newly created element and its content into the DOM
+  ul.appendChild(li);
+}
+// addingStars();
+/*
+*
+*
+*
+*/
+
+function moveCounter() {
+  let counter = 1;
+  moves.innerHTML = 6
+}
+// moveCounter();
+/*
+*
+*
+*
+*/
+
+// function checkForMatch(){
+//   // this stateent is checking whether the user has played two cards and the number is .
+//   if (cardsInPlay.length === 2){
+//     if (cardsInPlay[0] === cardsInPlay[1]){
+//       card.removeClass('open', 'show');
+//       card.addClass('card match');
+//       console.log("You have found a match!");
+//     }else{
+//       // alert("Sorry, Try again");
+//       console.log("NOOOOO")
+//     }
+//    }
+// }
+
+/*
+*
+*
+*
+*/
 
 function flipCard() {
   cards.forEach((card) => {
+    console.log(cards);
+    console.log(card);
+
     card.addEventListener('click', (e) => {
       // openCard();
       card.classList.add('open', 'show');
@@ -105,9 +209,10 @@ function flipCard() {
             })
           }, 1000)
         }
+        // checkForMatch();
     })
   })
-  newGame();
+  // newGame();
 }
 
 
