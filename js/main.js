@@ -91,7 +91,7 @@ function hideCards(){
   setTimeout(() => {
     openCards.forEach((card) => {
       card.classList.remove('open', 'show');
-    })
+    }); openCards = [];
   }, 1000);
 }
 
