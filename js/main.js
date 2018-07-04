@@ -70,7 +70,7 @@ function displayCards() {
     card.addEventListener('click', () => {
       toggleCards(card);
       addOpenCardstoArray(card);
-      countingMoves();
+      // countingMoves();
       winOrLose();
       restartTheGame();
     })
@@ -91,6 +91,10 @@ function hideCards(){
   setTimeout(() => {
     openCards.forEach((card) => {
       card.classList.remove('open', 'show');
+      // there was an issue--when cards dont match this function
+      // was only removing the open and show class from the
+      // cards but not emptying out the openCards array. My
+      // mentor Shradha fixed it with line 98 -- openCards = [].
     }); openCards = [];
   }, 1000);
 }
@@ -103,6 +107,8 @@ function addOpenCardstoArray(card) {
       // now cehck for match
       checkForMatch(openCards[0], openCards[1]);
       console.log(openCards)
+      countingMoves();
+      checkScore();
     }
   }
 }
@@ -130,6 +136,18 @@ function countingMoves () {
   console.log(`moves taken:${moveCounter}`)
 }
 
+function removeStar() {
+  const li = document.querySelector('.stars li');
+  console.log(li)
+  stars.removeChild(li);
+}
+
+function checkScore() {
+  console.log(moveCounter)
+  if(moveCounter === 16 || moveCounter === 24) {
+    removeStar();
+  }
+}
 //if all cards have matched, display a message with
 //the final score (put this functionality in another
 //function that you call from this one)
