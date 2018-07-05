@@ -11,7 +11,7 @@ const close = document.querySelector('.close');
 let openCards = [];
 let moveCounter = 0;
 let time = 0;
-let clockOff = true;
+// let clockOff = true;
 let matchedCards = [];
 
 
@@ -205,9 +205,14 @@ function closeTheModal() {
 
 function restartTheGame() {
   restart.addEventListener('click', () => {
-    deck.innerHTML = '';
-    openCards = [];
+    // deck.innerHTML = '';
+    // hideCards();
+    // openCards = [];
+    // matchedCards = [];
+    location.reload();
     console.log('restarted')
+    console.log(matchedCards);
+    console.log(openCards)
   })
 }
 
