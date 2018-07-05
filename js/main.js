@@ -5,8 +5,13 @@ const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
+const clock = document.querySelector('.clock');
 let openCards = [];
 let moveCounter = 0;
+let time = 0;
+let clockOff = true;
+let matchedCards = [];
+
 
 /*
  * Create a list that holds all of your cards
@@ -118,7 +123,12 @@ function checkForMatch(cardOne, cardTwo) {
     console.log("found a match!!!!")
     cardOne.classList.add('match');
     cardTwo.classList.add('match');
+    // if there is any match, push those cards to
+    //matchedCards array.
+    matchedCards.push(cardOne)
+    matchedCards.push(cardTwo)
     openCards = [];
+    console.log(matchedCards)
   }else{
     hideCards();
     console.log('no match found.')
@@ -136,12 +146,15 @@ function countingMoves () {
   console.log(`moves taken:${moveCounter}`)
 }
 
+// remove stars from DOM
 function removeStar() {
   const li = document.querySelector('.stars li');
   console.log(li)
   stars.removeChild(li);
 }
 
+// check score will keep track of how many times a player
+// has clicked to match the cards
 function checkScore() {
   console.log(moveCounter)
   if(moveCounter === 16 || moveCounter === 24) {
@@ -153,10 +166,21 @@ function checkScore() {
 //function that you call from this one)
 
 function winOrLose() {
-  if(openCards.length === 16){
+  if(matchedCards.length === 16){
     console.log('you won!')
   }
 }
+
+// function startTheClock() {
+//  let clockId = setInterval(() => {
+//   time++;
+//   // const minutes = (time / 60);
+//   // const seconds = time % 60;
+//   // clock.innerHTML = minutes;
+//   clock.innerHTML = time;
+//   console.log(time)
+//  }, 1000)
+// }
 
 function restartTheGame() {
   restart.addEventListener('click', () => {
