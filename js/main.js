@@ -6,6 +6,8 @@ const restart = document.querySelector('.restart');
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
 const clock = document.querySelector('.clock');
+const modal = document.querySelector('.modal');
+const close = document.querySelector('.close');
 let openCards = [];
 let moveCounter = 0;
 let time = 0;
@@ -168,7 +170,26 @@ function checkScore() {
 function winOrLose() {
   if(matchedCards.length === 16){
     console.log('you won!')
+    callTheModal();
   }
+}
+
+// modal
+function callTheModal() {
+  modal.style.display = 'block';
+  gameSummary();
+  closeTheModal();
+}
+
+function gameSummary () {
+  countingMoves();
+  checkScore();
+}
+
+function closeTheModal() {
+  close.addEventListener('click', () => {
+    modal.style.display = 'none';
+  })
 }
 
 // function startTheClock() {
