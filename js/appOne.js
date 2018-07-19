@@ -13,6 +13,7 @@ deck.addEventListener('click', event => {
   if(clickTarget.classList.contains('card') && openCards.length < 2) {
     toggleCards(clickTarget);
     addOpenCardstoArray(clickTarget);
+    console.log(openCards)
     checkForMatch();
   }
 })
@@ -25,15 +26,15 @@ function toggleCards(card) {
 // push the open card to the openCards array
 function addOpenCardstoArray(card) {
   openCards.push(card);
-  console.log(openCards)
+  // console.log(openCards)
 }
 
 function checkForMatch() {
   let cardOne = openCards[0];
-  console.log(cardOne.firstElementChild.className)
   let cardTwo = openCards[1];
-  if(cardOne.firstElementChild.className === cardTwo.firstElementChild.className){
-    console.log("found a match!!!!")
+  console.log(cardOne.firstElementChild.className)
+  console.log(cardTwo.firstElementChild.className)
+  if(cardOne.firstElementChild.className === cardTwo.firstElementChild.className){    console.log("found a match!!!!")
     cardOne.classList.toggle('match');
     cardTwo.classList.toggle('match');
     openCards = [];

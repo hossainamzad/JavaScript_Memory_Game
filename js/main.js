@@ -5,16 +5,19 @@ const moves = document.querySelector('.moves');
 const restart = document.querySelector('.restart');
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
+// const cards = [...document.querySelectorAll('.card')];
+// let cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+let [...cardsArr] = cards;
 const clock = document.querySelector('.clock');
 const modal = document.querySelector('.modal');
 const close = document.querySelector('.close');
 let openCards = [];
 let moveCounter = 0;
 let time = 0;
-// let clockOff = true;
+let clockOff = true;
 let matchedCards = [];
 
-
+console.log(shuffle(cardsArr));
 /*
  * Create a list that holds all of your cards
  */
@@ -29,6 +32,7 @@ let cardHolder = ['fa-diamond', 'fa-diamond',
                   'fa-bomb', 'fa-bomb'
               ];
 
+// let myCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -73,7 +77,8 @@ function shuffle(array) {
 
 // this function will display cards upon clicking
 function displayCards() {
-  cards.forEach((card) => {
+  console.log(cards)
+  shuffle(cardsArr).forEach((card) => {
     card.addEventListener('click', () => {
       toggleCards(card);
       addOpenCardstoArray(card);
@@ -82,6 +87,7 @@ function displayCards() {
       restartTheGame();
     })
   })
+  console.log(cardsArr)
 }
 displayCards();
 
@@ -101,7 +107,7 @@ function hideCards(){
       // there was an issue--when cards dont match this function
       // was only removing the open and show class from the
       // cards but not emptying out the openCards array. My
-      // mentor Shradha fixed it with line 98 -- openCards = [].
+      // mentor Shradha fixed it with line 106 -- openCards = [].
     }); openCards = [];
   }, 1000);
 }
@@ -192,16 +198,16 @@ function closeTheModal() {
   })
 }
 
-// function startTheClock() {
-//  let clockId = setInterval(() => {
-//   time++;
-//   // const minutes = (time / 60);
-//   // const seconds = time % 60;
-//   // clock.innerHTML = minutes;
-//   clock.innerHTML = time;
-//   console.log(time)
-//  }, 1000)
-// }
+function startTheClock() {
+ let clockId = setInterval(() => {
+  time++;
+  // const minutes = (time / 60);
+  // const seconds = time % 60;
+  // clock.innerHTML = minutes;
+  clock.innerHTML = time;
+  console.log(time)
+ }, 1000)
+}
 
 function restartTheGame() {
   restart.addEventListener('click', () => {
