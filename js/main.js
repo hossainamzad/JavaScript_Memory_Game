@@ -6,7 +6,7 @@ const restart = document.querySelector('.restart');
 const deck = document.querySelector('.deck');
 const cards = document.querySelectorAll('.card');
 // const cards = [...document.querySelectorAll('.card')];
-// let cards = Array.prototype.slice.call(document.querySelectorAll('.card'));
+// let cardsArray = Array.prototype.slice.call(document.querySelectorAll('.card'));
 let [...cardsArr] = cards;
 const clock = document.querySelector('.clock');
 const modal = document.querySelector('.modal');
@@ -17,22 +17,16 @@ let time = 0;
 let clockOff = true;
 let matchedCards = [];
 
-console.log(shuffle(cardsArr));
-/*
- * Create a list that holds all of your cards
- */
+// let cardHolder = ['fa-diamond', 'fa-diamond',
+//                   'fa-paper-plane-o', 'fa-paper-plane-o',
+//                   'fa-anchor', 'fa-anchor',
+//                   'fa-bolt', 'fa-bolt',
+//                   'fa-cube', 'fa-cube',
+//                   'fa-leaf', 'fa-leaf',
+//                   'fa-bicycle', 'fa-bicycle',
+//                   'fa-bomb', 'fa-bomb'
+//               ];
 
-let cardHolder = ['fa-diamond', 'fa-diamond',
-                  'fa-paper-plane-o', 'fa-paper-plane-o',
-                  'fa-anchor', 'fa-anchor',
-                  'fa-bolt', 'fa-bolt',
-                  'fa-cube', 'fa-cube',
-                  'fa-leaf', 'fa-leaf',
-                  'fa-bicycle', 'fa-bicycle',
-                  'fa-bomb', 'fa-bomb'
-              ];
-
-// let myCards = [];
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -49,6 +43,14 @@ function shuffle(array) {
     return array;
 }
 
+
+function shuffleDeck() {
+    // const cardsToShuffle = Array.from(document.querySelectorAll('.deck li'));
+    const shuffledCards = shuffle(cardsArr);
+    for (card of shuffledCards) {
+        deck.appendChild(card);
+    }
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -77,12 +79,13 @@ function shuffle(array) {
 
 // this function will display cards upon clicking
 function displayCards() {
+  shuffleDeck();
   console.log(cards)
-  shuffle(cardsArr).forEach((card) => {
+  cardsArr.forEach((card) => {
     card.addEventListener('click', () => {
       toggleCards(card);
       addOpenCardstoArray(card);
-      // countingMoves();
+      countingMoves();
       winOrLose();
       restartTheGame();
     })
