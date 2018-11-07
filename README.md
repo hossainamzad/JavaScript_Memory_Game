@@ -15,12 +15,14 @@ Memory game is simple card matching game built on javascript.
     3) CSS
 
 
-## Challenges
-    * Had struggled all the way. 
-    * Building JavaScript application is tough.
-
-## Wins     
-    * App is working.
+## How to play the game: 
+    * Click on random boxes.
+    * Memorize the image each time you open each box.
+    * If the cards don't match, the open card will disappear
+    * When you match the pair they will remain visible.
+    * When you find all the matching cards, a modal will appear
+        and display the stats of the game.
+    * A counter records the number of your moves to win the game.
 
 ## Post MVP:
     - Will improve the code quality and efficiency.
