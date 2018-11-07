@@ -27,5 +27,8 @@ Memory game is simple card matching game built on javascript.
 ## Post MVP:
     - Will improve the code quality and efficiency.
 
+## Dependencies:
+    * Font Awesome and Google Fonts    
+
 
 
