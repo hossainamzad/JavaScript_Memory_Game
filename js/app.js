@@ -19,6 +19,7 @@ function resetGame() {
     resetStars();
     resetDeck();
     shuffleCards();
+    cardList = [];
 }
 
 function resetTime() {
@@ -149,7 +150,7 @@ function addMove() {
 }
 
 function checkMoves() {
-    if (moves === 8 || moves === 24 || moves === 32) {
+    if (moves === 8 || moves === 24) {
         removeStar();
     }
 
